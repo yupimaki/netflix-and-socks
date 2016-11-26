@@ -23,35 +23,36 @@ you with 750 hours a month (where `31 * 24 = 744`) of time on a linux machine fo
 account, but presumably in a year this method won't work anymore.
 
 The basic steps are outlined below
- - Sign up for an AWS account and launch a box in the US (Assumed `Ubuntu 16.04`)
+ - Sign up for an AWS account and launch a box in the US (`Ubuntu 16.04` image)
  - Set up an account with a DDNS
  - On the AWS instance:
-   - Set the configuration for the DDNS client
    - Install `docker`
    - Run a docker image of the `noip` client
+   - Set the configuration for the DDNS client
  - On the host machine:
    - Add an `ssh` alias
-   - Add alias to:
+   - Add aliases to:
      - Set up a background `ssh` tunnel using the instance as a proxy
      - Run a browser which connects to the web through the proxy
      - Kill background `ssh` tunnel
 
-At this point the set up works, and you can check your ip address if from the US
+At this point the set up works, and you can check your ip address is from the US
 by googling 'what's my IP'. You can then add Amazon cloud watch scripts to,
-for example, only run the AWS instance at specific times of day, where the DDNS
-and SSH alias will handle the instance's dynamic IP.
+for example, only run the AWS instance at specific times of day (to conserve 
+your free hours), where the DDNS and SSH alias will handle the instance's dynamic 
+IP on shutdown and restart.
 
 ## Account Set Up
 
 #### AWS
 
 We use AWS to spoof an IP address from a different location. AWS have servers in
-the US, hence we use this service to set up a virtual machine on their hardware,
-in the US. This means that any service sending web traffic to them, send it to a
+the US, hence we use their service to set up a virtual machine on their hardware,
+in the US. This means that any service sending web traffic to them send it to a
 US address, and so sends them traffic appropriate for the US. We can then read
 the data from the virtual machine (we 'forward' the traffic to the UK).
 
- - Sign up to AWS
+ - Sign up to AWS [here](https://aws.amazon.com/console/)
  - Follow the wizard to launch a free EC2 instance in some US region
    - AWS is fairly generous with marking out exactly which options are free
  - Generate a `.pem` key to set the instance up with and download it
@@ -66,29 +67,31 @@ the data from the virtual machine (we 'forward' the traffic to the UK).
    - The default amazon user is `ubuntu`
    - Hence an example command is `ssh -i ~/Downloads/key.pem ubuntu@54.192.170.23`
  - Place your normal public key in `~/.ssh/authorized_keys` on the instance if you
- have one, of continue to use the `.pem`
+ have one, or continue to use the `.pem`
    - Using an authorized key skips manually routing to the `.pem` to login
 
 
 #### DDNS
 
 A DNS (domain naming service) is how text URLs such as `www.google.com`, are
-translated to IP addresses, such as `74.125.236.195` - where the IP address is
+translated to IP addresses, such as `74.125.236.195`, where the IP address is
 what the network uses to point to a machine. A DDNS (Dynamic Domain Naming Service)
-is useful if our IP address changes often, and we don't have to type in an
+is useful if our IP address changes often and we don't have to type in an
 arbitrary sequence of numbers every time we wish to point to our machine. The
 service updates the link between the text URL and IP address.
 
 Why does our IP change? We have the cheapest machine possible on AWS and so our
 physical location on their servers is the lowest priority.  If we shutdown our
 instance and someone else needs the space, our instance will move to a different
-IP address, hence we have to go through the hassle of finding the new IP address.
+IP address, hence we have to go through the hassle of finding the new IP address
+to re-login to the machine.
 In general, each time we start our AWS instance, the IP address is not guarenteed
-to be the same, hence the DDNS gives us a static character string to reference,
+to be the same, hence the DDNS gives us a static character string to reference
 when pointing to our machine.
 
  - Signing up to a DDNS is as easy as signing up to any service. The recommended
    service, `noip`, is found [here](https://www.noip.com/sign-up)
+   - Sadly, you cannot yet sign in through facebook.
    - At some point, you will have to put the password to the service in a plain
    text file.  If, like me, even though you know the file can be fully protected
    you do not like the idea of seeing your an important password in plain text,
