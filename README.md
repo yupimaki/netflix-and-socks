@@ -135,7 +135,9 @@ docker run \
  - The `noip` client will be downloaded and set running in its own sand-boxed
  environment.
  - Set up the `noip` configuration with the details you signed up to the service
- with by copy and pasting the below code into the terminal
+ with
+   - Chane the details in the block below to your own, then copy and paste 
+   code into the terminal
 
 ```
 # set up config on aws instance - use your own details ofc
