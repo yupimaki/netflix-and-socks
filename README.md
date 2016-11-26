@@ -253,4 +253,4 @@ Akhil
 ### References
  - Route traffic using SOCKS tunnel
    - https://www.digitalocean.com/community/tutorials/how-to-route-web-traffic-securely-without-a-vpn-using-a-socks-tunnel
- - Shout out to Richard who helped with showed me how to use a DDNS
+ - Shout out to Richard who showed me how to use a DDNS
