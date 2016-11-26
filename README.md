@@ -1,11 +1,11 @@
 # Watch US Netflix from the UK using `ssh`
 ### When nested procrastination produces something useful
 
-NOTE: Yes, this all can be achieved through a run off-the-mill VPN. I like the 
+_NOTE: Yes, this all can be achieved through a run off-the-mill VPN. I like the 
 detached nature of this solution from any other service. It will never ask you
 to pay for more features. All parts of the solution are owned by you. It does not
 bottleneck your speed and ask you to pay for higher priority.  As far as I can
-tell, this runs at native speed.
+tell, this runs at native speed._
 
 This basic guide will outline the steps to set up a `SOCKS5` proxy over `ssh` on
 an Amazon Web Services instance in the US to forward net traffic from a machine
