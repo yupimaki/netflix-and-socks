@@ -1,6 +1,9 @@
 # Watch US Netflix from the UK using `ssh`
 ### When nested procrastination produces something useful
 
+_DISCLAIMER: This has been written for educational purposes of learning about net
+traffic routing. You should probably only employ this if you live in the US._
+
 _NOTE: Yes, this all can be achieved through a run off-the-mill VPN. I like the 
 detached nature of this solution from any other service. It will never ask you
 to pay for more features. All parts of the solution are owned by you. It does not
