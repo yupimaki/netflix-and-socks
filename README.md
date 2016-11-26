@@ -95,7 +95,7 @@ when pointing to our machine.
    - At some point, you will have to put the password to the service in a plain
    text file.  If, like me, even though you know the file can be fully protected
    you do not like the idea of seeing your an important password in plain text,
-   choose a different one.
+   choose a different password to ones you usually default to.
 
 ## On the Remote Instance
 
