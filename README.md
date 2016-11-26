@@ -136,7 +136,7 @@ docker run \
  environment.
  - Set up the `noip` configuration with the details you signed up to the service
  with
-   - Chane the details in the block below to your own, then copy and paste 
+   - Change the details in the block below to your own, then copy and paste 
    code into the terminal
 
 ```
@@ -151,12 +151,12 @@ echo "INTERVAL='30m'" | tee -a ~/no_ip_config/noip.conf
 
 ## On the Host (assuming a Ubuntu host)
 
-We add an `ssh` alias for ease of using `ssh`. Instead of the length command that
-was necessary previously, we after adding an alias we can log on to our remote
-machine through `ssh`, simply by typing `ssh <alias>`.  Aliases are added by
-adding new hosts and configuration to the `~/.ssh/config` file. Copy and paste
+We add an `ssh` alias for ease of using `ssh`. Instead of the lengthy command that
+was necessary previously, after adding an alias, we can log on to our remote
+machine through `ssh` simply by typing `ssh <alias>`.  Aliases are added by
+adding new hosts (and configuring them) to the `~/.ssh/config` file. Copy and paste
 the below block into the host terminal, with the URL you chose for your remote
-machine via `noip`.
+machine through the DDNS.
 
 ```
 # Add an ssh alias on host
@@ -164,11 +164,13 @@ echo "Host US-Jumpbox" >> ~/.ssh/config
 echo "  Hostname yupimaki.ddns.net" >> ~/.ssh/config
 echo "  User ubuntu" >> ~/.ssh/config
 ```
+
 This will set up an alias such that `ssh US-Jumpbox` routes to
 `ssh ubuntu@yupimaki.ddns.net`, to `ssh ubuntu@XX.XXX.XXX.XX`, where the IP
 address will have been recently updated by the docker container running on the
-remote instance.  If you didn't add a public key, an wish to keep using the `.pem`,
-add an extra line to `~/.ssh/config` with `IdentityFile path/to/key.pem`.
+remote instance.  If you didn't add a public key to the remote machine, 
+and wish to keep using the `.pem` file, add an extra line to `~/.ssh/config` 
+with `IdentityFile path/to/key.pem`.
 
 ## Final Aliases on Host
 
@@ -179,7 +181,7 @@ I find the easiest way (by no means the correct way) to do this is to add some
 lines to my `~/.bashrc` file.  
 
 ```
-# Easy way to kill ssh tunnel
+# Easy way to kill a process if running on an unknown port
 port-kill () {
    # Find offending process's port
    {
@@ -230,6 +232,15 @@ google-chrome --proxy-server='socks5://localhost:1089'"
 This command simply starts google chrome, however specifies that it connects to
 the web through a proxy server.  The server is our `localhost` at port `1089`,
 which we know is dynamically routing our web traffic through the US.
+
+Now all you have to do to watch US Netflix (legally, provided you live in the US)
+is to run the command `us-netflix` in the terminal.  Unfortunately there seems to
+be a small bug in `google-chrome`, where you cannot force the browser to run in a 
+new session, so for the routing to work, `chrome` cannot already be open. To
+get around this, use one browser reading traffic through the proxy, and other for
+general surfing.
+
+When done, tear down the tunnel using `kill-ssh`, or simply leave it running.
 
 Thanks for reading,
 
