@@ -115,7 +115,7 @@ that their application will be set up in, minimising errors in simple applicatio
 
  - `ssh` into the remote machine using the public IP address from the AWS console
  - Install docker using walkthrough [here](https://docs.docker.com/engine/installation/linux/ubuntulinux/)
-   - If you've not used linux before, these docs are fairly accessible to follow. The set up amount to smashing `ctrl-c`, `ctrl-v` multiple times to achieve something fairly complex.
+   - If you've not used linux before, these docs are fairly accessible to follow. The set up amounts to smashing `ctrl-c`, `ctrl-v` multiple times to achieve something fairly complex.
 
 #### `noip`
 
