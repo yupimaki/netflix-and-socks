@@ -14,7 +14,8 @@ This basic guide will outline the steps to set up a `SOCKS5` proxy over `ssh` on
 an Amazon Web Services instance in the US to forward net traffic from a machine
 with a foreign IP address to the host machine. I set this up for use with
 Netflix, but presumably it can be used for other web services that are location
-based.
+based. If successful, running the command `netflix-us` in a terminal should launch
+a browser, who thinks s/he lives in the US.
 
 The service is free for a year provided you don't run any other AWS instances on
 the account that is used to set up the AWS instance. The AWS 'free tier' provides
@@ -173,6 +174,9 @@ and wish to keep using the `.pem` file, add an extra line to `~/.ssh/config`
 with `IdentityFile path/to/key.pem`.
 
 ## Final Aliases on Host
+
+_NOTE: If your host machine isn't running linux, 1) wot r u doin, 2) please
+refer to the link in the references to crack these last steps on other OSes_
 
 Finally, we need an easy way to set up our ssh tunnel to the proxy server and
 launch a browser which is configured to connect to the web through the proxy.
