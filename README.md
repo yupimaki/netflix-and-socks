@@ -121,7 +121,8 @@ that their application will be set up in, minimising errors in simple applicatio
 
 #### `noip`
 
- - Run this command to set up the docker image
+ - Run this command to set up the docker image. `docker` commands need to be run
+ as `root`, i.e. with `sudo`
 
 ```
 docker run \
