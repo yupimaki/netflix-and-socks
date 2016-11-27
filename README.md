@@ -241,12 +241,12 @@ This command simply starts google chrome, however specifies that it connects to
 the web through a proxy server.  The server is our `localhost` at port `1089`,
 which we know is dynamically routing our web traffic through the US.
 
-Now all you have to do to watch US Netflix (legally, provided you live in the US)
-is to run the command `us-netflix` in the terminal.  Unfortunately there seems to
-be a small bug in `google-chrome`, where you cannot force the browser to run in a 
-new session, so for the routing to work, `chrome` cannot already be open. To
-get around this, use one browser reading traffic through the proxy, and other for
-general surfing.
+Now all you have to do to watch US Netflix (whilst respecting copyright, 
+[provided you live in the US]) is to run the command `us-netflix` in the terminal.  
+Unfortunately there seems to be a small bug in `google-chrome`, where you cannot 
+force the browser to run in a new session, so for the routing to work, `chrome` 
+cannot already be open. To get around this, use one browser reading traffic 
+through the proxy, and other for general surfing.
 
 When done, tear down the tunnel using `kill-ssh`, or simply leave it running.
 
