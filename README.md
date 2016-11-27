@@ -4,11 +4,15 @@
 _DISCLAIMER: This has been written for educational purposes of learning about net
 traffic routing. You should probably only employ this if you live in the US._
 
-_NOTE: Yes, this all can be achieved through a run off-the-mill VPN. I like the 
-detached nature of this solution from any other service. It will never ask you
-to pay for more features. All parts of the solution are owned by you. It does not
-bottleneck your speed and ask you to pay for higher priority.  There is no
-advertising. As far as I can tell, this runs at native speed._
+_NOTE: Yes, this, and more, all can be achieved through a private VPN or VPN
+provider. 
+I prefer the reliance of this solution on essentially only ssh.
+All parts of the solution are owned by you.
+There will never be more features to pay for. 
+Your speed is not bottlenecked and always runs at highest priortiy
+There is no advertising. 
+A SOCKS proxy will be faster than a VPN as it skips an encryption layer.
+For the implicit problem, I feel the solution given here is optimal._
 
 This basic guide will outline the steps to set up a `SOCKS5` proxy over `ssh` on
 an Amazon Web Services instance in the US to forward net traffic from a machine
