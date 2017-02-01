@@ -126,19 +126,6 @@ that their application will be set up in, minimising errors in simple applicatio
 
 #### `noip`
 
- - Run this command to set up the docker image. `docker` commands need to be run
- as `root`, i.e. with `sudo`
-
-```
-docker run \
-   -v /home/ubuntu/no_ip_config:/config \
-   -v /etc/localtime:/etc/localtime \
-   -d  --restart=unless-stopped \
-   coppit/no-ip
-```
-
- - The `noip` client will be downloaded and set running in its own sand-boxed
- environment.
  - Set up the `noip` configuration with the details you signed up to the service
  with
    - Change the details in the block below to your own, then copy and paste 
@@ -147,12 +134,28 @@ docker run \
 ```
 # set up config on aws instance - use your own details ofc
 mkdir ~/no_ip_config
-echo "USERNAME='yupimaki" | tee ~/no_ip_config/noip.conf
+echo "USERNAME='yupimaki'" | tee ~/no_ip_config/noip.conf
 echo "PASSWORD='ILoveDDNS'" | tee -a ~/no_ip_config/noip.conf
 echo "DOMAINS='yupimaki.ddns.net'" | tee -a ~/no_ip_config/noip.conf
 # Examples: 5 m, 5 h, 5 d. Minimum is 5 minutes.
 echo "INTERVAL='30m'" | tee -a ~/no_ip_config/noip.conf
 ```
+
+ - Run this command to set up the docker image. `docker` commands need to be run
+ as `root` if you didn't run `sudo usermod -aG docker $USER.
+
+```
+docker run \
+   --name noip \
+   -v /home/ubuntu/no_ip_config:/config \
+   -v /etc/localtime:/etc/localtime \
+   -d  --restart=unless-stopped \
+   coppit/no-ip
+```
+
+ - The `noip` client will be downloaded and set running in its own sand-boxed
+ environment.
+
 
 ## On the Host (assuming a Ubuntu host)
 
